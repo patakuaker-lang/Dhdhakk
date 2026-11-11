@@ -18,15 +18,13 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Setup Gradle CLI
+    - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
-      with:
-        gradle-version: '8.0'
 
     - name: Build Debug APK directly
-      run: gradle assembleDebug --no-daemon
+      run: gradle assembleDebug
 
-    - name: Upload APK Artifact
+    - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
         name: app-debug
