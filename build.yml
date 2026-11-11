@@ -20,9 +20,11 @@ jobs:
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v5
+      with:
+        gradle-version: '8.5'
 
     - name: Build with Gradle Action
-      run: gradle assembleDebug --no-daemon --warning-mode summary
+      run: gradle assembleDebug --no-daemon
 
     - name: Upload APK
       uses: actions/upload-artifact@v5
