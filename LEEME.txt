@@ -1,0 +1,21 @@
+Elixir Tracker v1.1 - Contador de elixir + detección de cartas con IA
+
+CÓMO OBTENER EL APK (recomendado: GitHub Actions)
+
+1. Creá una cuenta gratis en github.com y un repositorio nuevo.
+2. Subí TODO el contenido de esta carpeta (incluyendo la carpeta .github y app/src/main/assets con el modelo).
+3. Entrá a la pestaña "Actions". Se ejecuta "Build APK" o dale a Run workflow. Tarda varios minutos (el modelo es grande).
+4. Cuando termine (tilde verde), bajá el artefacto "elixir-tracker-apk" (adentro está app-debug.apk).
+5. Instalá en el celular (permití orígenes desconocidos).
+
+USO
+1. Permiso de superposición
+2. Iniciar + aceptar captura de pantalla
+3. Abrí Clash Royale
+- La app detecta el inicio de partida por la barra de elixir rosa.
+- Cuando el modelo reconoce una carta del rival, resta el elixir automáticamente.
+- Los botones 1-7 siguen disponibles para corregir a mano.
+- La ventanita muestra la última carta detectada.
+
+NOTA: la detección depende de cómo entrenaste el modelo (cartas en mano vs en el campo).
+Si detecta mal, podés ajustar confThreshold en CardDetector.kt o la zona detectTop/detectBottom en CaptureService.kt.
