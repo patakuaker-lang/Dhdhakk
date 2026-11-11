@@ -18,8 +18,10 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Compile Direct with Gradle
-      run: gradle assembleDebug --no-daemon
+    - name: Make executable and build
+      run: |
+        chmod +x gradlew
+        ./gradlew
 
     - name: Upload APK
       uses: actions/upload-artifact@v5
