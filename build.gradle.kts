@@ -15,12 +15,6 @@ android {
         versionName = "1.1"
     }
 
-    sourceSets {
-        getByName("main") {
-            manifest.srcFile("AndroidManifest.xml")
-        }
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
