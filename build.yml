@@ -10,30 +10,24 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
 
     - name: Set up JDK 17
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v5
       with:
         distribution: 'temurin'
         java-version: '17'
 
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
-
-    - name: Build with Gradle (without wrapper)
-      uses: gradle/actions/setup-gradle@v3
+      uses: android-actions/setup-android@v5
 
     - name: Build Debug APK
-      run: ./gradle assembleDebug
-      continue-on-error: true
-
-    - name: Build using direct gradle task
-      if: always()
-      run: gradle assembleDebug
+      run: ./gradlew assembleDebug
+      env:
+        ANDROID_HOME: ${{ steps.setup-android.outputs.android-home }}
 
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v5
       with:
         name: app-debug
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: build/outputs/apk/debug/*.apk
