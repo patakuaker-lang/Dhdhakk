@@ -18,10 +18,18 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Setup Gradle
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Build with Gradle (without wrapper)
       uses: gradle/actions/setup-gradle@v3
 
-    - name: Build with Gradle
+    - name: Build Debug APK
+      run: ./gradlew assembleDebug
+      continue-on-error: true
+
+    - name: Build using direct gradle task
+      if: always()
       run: gradle assembleDebug
 
     - name: Upload APK
