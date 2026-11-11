@@ -15,6 +15,14 @@ android {
         versionName = "1.1"
     }
 
+    // Esto le indica a Gradle que tus archivos están sueltos en la raíz
+    sourceSets {
+        getByName("main") {
+            manifest.srcFile("AndroidManifest.xml")
+            java.srcDirs(listOf("."))
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
