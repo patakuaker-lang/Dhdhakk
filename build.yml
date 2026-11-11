@@ -25,7 +25,7 @@ jobs:
       run: gradle assembleDebug --no-daemon
 
     - name: Upload APK
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: app-debug
         path: build/outputs/apk/debug/*.apk
