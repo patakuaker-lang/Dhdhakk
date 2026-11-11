@@ -18,13 +18,11 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v5
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v5
 
-    - name: Build Debug APK
-      run: ./gradle assembleDebug
-      env:
-        ANDROID_HOME: ${{ steps.setup-android.outputs.android-home }}
+    - name: Compile Debug APK
+      run: gradle assembleDebug --no-daemon
 
     - name: Upload APK
       uses: actions/upload-artifact@v5
