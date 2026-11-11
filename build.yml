@@ -22,7 +22,7 @@ jobs:
       uses: gradle/actions/setup-gradle@v5
 
     - name: Build with Gradle Action
-      run: gradle assembleDebug --no-daemon
+      run: gradle assembleDebug --no-daemon --warning-mode summary
 
     - name: Upload APK
       uses: actions/upload-artifact@v5
